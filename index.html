@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <style>
+        body{
+            padding: 100px 100px;
+            text-align: center;
+        }
+        h1{
+            font-size:2.2rem;
+            color: brown;
+        }
+        input{
+            padding:10px;
+            width: 250px;
+            height: 10px;
+        }
+        #add{
+            padding: 10px;
+            background-color: brown;
+            color: white;
+            border: none;
+            width: 100px;
+            height: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="container">
+        <input type="text" placeholder="Add a new task" id="task">
+        <button id="add">Add</button>
+        <ul id="tasklist"></ul>
+    </div>
+ <script src="./script.js"></script>   
+</body>
+</html>
