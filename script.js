@@ -1,40 +1,52 @@
-let textInput = document.getElementById('task');
-let addbtn = document.getElementById('add');
-let tasklist = document.getElementById('tasklist');
+document.getElementById('todoForm').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-function addTask() {
-  const taskText = textInput.value.trim(); // Get input value and trim whitespace
-  if (taskText.length === 0) {
-    alert('Please enter a task!');
-    return;
-  }
+  const titleInput = document.getElementById('title');
+  const descriptionInput = document.getElementById('description');
+  const todoList = document.getElementById('todoList');
 
-  // Create a new list item
-  const taskListItem = document.createElement('li');
-  taskListItem.textContent = taskText;
+  const title = titleInput.value.trim();
+  const description = descriptionInput.value.trim();
 
-  // Create a delete button
-  const dltbtn = document.createElement('button');
-  dltbtn.textContent = 'X';
-  dltbtn.classList.add('remove');
-  dltbtn.onclick = () => {
-    taskListItem.remove(); // Remove the task item when delete button is clicked
-  };
+  if (title && description) {
+    
+      const li = document.createElement('li');
+      li.innerHTML = `
+          <div>
+              <span class="task-title">${title}</span><br>
+              <span class="task-desc">${description}</span>
+          </div>
+          <div>
+              <button class="action-btn edit-btn">Edit</button>
+              <button class="action-btn remove-btn">Remove</button>
+          </div>
+      `;
 
-  // Append delete button to the list item and add to task list
-  taskListItem.appendChild(dltbtn);
-  tasklist.appendChild(taskListItem);
+  
+      const editBtn = li.querySelector('.edit-btn');
+      editBtn.addEventListener('click', function() {
+          const newTitle = prompt('Edit title:', title);
+          const newDescription = prompt('Edit description:', description);
 
-  // Clear the input field
-  textInput.value = '';
-}
+          if (newTitle && newDescription) {
+              li.querySelector('.task-title').textContent = newTitle;
+              li.querySelector('.task-desc').textContent = newDescription;
+          }
+      });
 
-// Add event listener for the Add button
-addbtn.addEventListener('click', addTask);
+      
+      const removeBtn = li.querySelector('.remove-btn');
+      removeBtn.addEventListener('click', function() {
+          li.remove();
+      });
 
-// Add functionality to press Enter to add a task
-textInput.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    addTask();
+      
+      todoList.appendChild(li);
+
+      
+      titleInput.value = '';
+      descriptionInput.value = '';
+  } else {
+      alert('Please enter both a title and a description!');
   }
 });

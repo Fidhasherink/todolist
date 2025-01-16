@@ -3,38 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to do list</title>
+    <title>To-Do List</title>
     <style>
-        body{
-            padding: 100px 100px;
+        body {
+            font-family: Arial, sans-serif;
+            margin:20px 400px;
+            border: #1e1f20 solid 1px;
+            width: 650px;
+            align-items: center;
+            
+        }
+        
+        h1 {
             text-align: center;
         }
-        h1{
-            font-size:2.2rem;
-            color: brown;
+        form {
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        input{
-            padding:10px;
-            width: 250px;
-            height: 10px;
-        }
-        #add{
+        input, button {
+            margin: 5px;
             padding: 10px;
-            background-color: brown;
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .task-desc {
+            color: #34495e;
+            font-style: italic;
+        }
+        .action-btn {
+            background-color: #3498db;
             color: white;
             border: none;
-            width: 100px;
-            height: 35px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .remove-btn {
+            background-color: #537f94;
+        }
+        .edit-btn {
+            background-color: #537f93;
+        }
+        .action-btn:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
-    <h1>To Do List</h1>
     <div class="container">
-        <input type="text" placeholder="Add a new task" id="task">
-        <button id="add">Add</button>
-        <ul id="tasklist"></ul>
-    </div>
- <script src="./script.js"></script>   
+    <h1>To-Do List</h1>
+    <form id="todoForm">
+        <input type="text" id="title" placeholder="Enter task title" required>
+        <input type="text" id="description" placeholder="Enter task description" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul id="todoList"></ul>
+</div>
+
+    <script src="./script.js">
+        
+    </script>
 </body>
 </html>
